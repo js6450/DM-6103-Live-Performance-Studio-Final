@@ -3,6 +3,7 @@
 
 int particleLife = 360;
 int evolutions = 128; // Best at around 128. Should be multiple of 8.
+int dancerRadius = 35*35;
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -63,19 +64,19 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    if (ofGetFrameRate() < 55){ cout << "Frame rate is low: " << ofGetFrameRate() << endl;}
+    if (ofGetFrameRate() < 55){ cout << "Frame rate is below 55: " << ofGetFrameRate() << endl;}
     ofEnableDepthTest();
-//    ofEnableLighting();
+    ofEnableLighting();
     ofSetGlobalAmbientColor(ofFloatColor(0.f,0.f,0.f));
-//    mouseLight.enable();
+    mouseLight.enable();
     
     // Draw particles
     ofFill();
     for (particle &p : particles)
         p.draw();
     
-//    mouseLight.disable();
-//    ofDisableLighting();
+    mouseLight.disable();
+    ofDisableLighting();
     ofDisableDepthTest();
     
     // Draw border rectangle

@@ -4,6 +4,8 @@
 #include "particle.h"
 
 extern int evolutions;
+extern int dancerRadius;
+extern int particleLife;
 
 class ofApp : public ofBaseApp{
 

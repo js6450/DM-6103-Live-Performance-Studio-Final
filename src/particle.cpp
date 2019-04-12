@@ -14,6 +14,7 @@ void particle::setup(){
     pos.y = ofRandom(0,ofGetHeight());
     vel.x = ofRandom(-2,2);
     vel.y = ofRandom(-2,2);
+//    vel.x = vel.y = 0; // intrerestring effect
     
     color.r = 255;
     color.g = 255;
@@ -29,22 +30,21 @@ void particle::update(float*** fractal, int x, int y){
         setup();
     
     // attract to x, y
-    float force = 500/((x - pos.x)*(x - pos.x) + (y - pos.y)*(y - pos.y) - 2500);
+    float force = 500/((x - pos.x)*(x - pos.x) + (y - pos.y)*(y - pos.y) - dancerRadius);
     if (force > 1) force = 1;
     if (force < 0) {
         vel.x = 0;
         vel.y = 0;
         force = -0.5;
-        color.r = 255;
-        color.g = 247;
-        color.b = 226;
+//        force = 0 // interesting effect
+//        color.r = 255; color.g = 247; color.b = 226; // interesting effect
     }
     float angle = atan( (y-pos.y)/(x-pos.x) );
     if (x < pos.x) angle += M_PI;
     vel.x += cos(angle)*force;
     vel.y += sin(angle)*force;
     
-    // update position using vel times air resistance
+    // update position using vel times fractal
     if (pos.x > 0 && pos.x < ofGetWidth() && pos.y > 0 && pos.y < ofGetHeight()){
         int posx = pos.x/2;
         int posy = pos.y/2;

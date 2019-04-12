@@ -4,10 +4,7 @@
 //
 //  Created by Alexander Wing on 4/9/19.
 //
-
 #pragma once
-
-extern int particleLife;
 
 class particle : public ofBaseApp{
     
