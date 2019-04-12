@@ -10,7 +10,13 @@
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
 		E723BFAF225D52880063D8A1 /* particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E723BFAD225D52880063D8A1 /* particle.cpp */; };
-		E7AFA180225FE21900270D58 /* FastNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7AFA17F225FE21900270D58 /* FastNoise.cpp */; };
+		E7AFA18F2260493B00270D58 /* FastNoiseSIMD_sse2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7AFA1832260493B00270D58 /* FastNoiseSIMD_sse2.cpp */; settings = {COMPILER_FLAGS = "-msse2"; }; };
+		E7AFA1902260493B00270D58 /* FastNoiseSIMD_sse41.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7AFA1842260493B00270D58 /* FastNoiseSIMD_sse41.cpp */; settings = {COMPILER_FLAGS = "-msse4.1"; }; };
+		E7AFA1912260493B00270D58 /* FastNoiseSIMD_avx512.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7AFA1852260493B00270D58 /* FastNoiseSIMD_avx512.cpp */; settings = {COMPILER_FLAGS = "-mavx512f"; }; };
+		E7AFA1922260493B00270D58 /* FastNoiseSIMD_internal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7AFA1882260493B00270D58 /* FastNoiseSIMD_internal.cpp */; };
+		E7AFA1932260493B00270D58 /* FastNoiseSIMD_avx2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7AFA1892260493B00270D58 /* FastNoiseSIMD_avx2.cpp */; settings = {COMPILER_FLAGS = "-mavx2"; }; };
+		E7AFA1952260493B00270D58 /* FastNoiseSIMD_neon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7AFA18D2260493B00270D58 /* FastNoiseSIMD_neon.cpp */; };
+		E7AFA1962260493B00270D58 /* FastNoiseSIMD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7AFA18E2260493B00270D58 /* FastNoiseSIMD.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -209,8 +215,15 @@
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 		E723BFAC225D52770063D8A1 /* particle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = particle.h; sourceTree = "<group>"; };
 		E723BFAD225D52880063D8A1 /* particle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = particle.cpp; sourceTree = "<group>"; };
-		E7AFA17F225FE21900270D58 /* FastNoise.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FastNoise.cpp; sourceTree = "<group>"; };
-		E7AFA181225FE22B00270D58 /* FastNoise.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FastNoise.h; sourceTree = "<group>"; };
+		E7AFA1832260493B00270D58 /* FastNoiseSIMD_sse2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FastNoiseSIMD_sse2.cpp; sourceTree = "<group>"; };
+		E7AFA1842260493B00270D58 /* FastNoiseSIMD_sse41.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FastNoiseSIMD_sse41.cpp; sourceTree = "<group>"; };
+		E7AFA1852260493B00270D58 /* FastNoiseSIMD_avx512.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FastNoiseSIMD_avx512.cpp; sourceTree = "<group>"; };
+		E7AFA1862260493B00270D58 /* FastNoiseSIMD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastNoiseSIMD.h; sourceTree = "<group>"; };
+		E7AFA1872260493B00270D58 /* FastNoiseSIMD_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastNoiseSIMD_internal.h; sourceTree = "<group>"; };
+		E7AFA1882260493B00270D58 /* FastNoiseSIMD_internal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FastNoiseSIMD_internal.cpp; sourceTree = "<group>"; };
+		E7AFA1892260493B00270D58 /* FastNoiseSIMD_avx2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FastNoiseSIMD_avx2.cpp; sourceTree = "<group>"; };
+		E7AFA18D2260493B00270D58 /* FastNoiseSIMD_neon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FastNoiseSIMD_neon.cpp; sourceTree = "<group>"; };
+		E7AFA18E2260493B00270D58 /* FastNoiseSIMD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FastNoiseSIMD.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -541,11 +554,26 @@
 				E723BFAD225D52880063D8A1 /* particle.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				E723BFAC225D52770063D8A1 /* particle.h */,
-				E7AFA17F225FE21900270D58 /* FastNoise.cpp */,
-				E7AFA181225FE22B00270D58 /* FastNoise.h */,
+				E7AFA1822260493B00270D58 /* FastNoiseSIMD */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
+		};
+		E7AFA1822260493B00270D58 /* FastNoiseSIMD */ = {
+			isa = PBXGroup;
+			children = (
+				E7AFA1832260493B00270D58 /* FastNoiseSIMD_sse2.cpp */,
+				E7AFA1842260493B00270D58 /* FastNoiseSIMD_sse41.cpp */,
+				E7AFA1852260493B00270D58 /* FastNoiseSIMD_avx512.cpp */,
+				E7AFA1862260493B00270D58 /* FastNoiseSIMD.h */,
+				E7AFA1872260493B00270D58 /* FastNoiseSIMD_internal.h */,
+				E7AFA1882260493B00270D58 /* FastNoiseSIMD_internal.cpp */,
+				E7AFA1892260493B00270D58 /* FastNoiseSIMD_avx2.cpp */,
+				E7AFA18D2260493B00270D58 /* FastNoiseSIMD_neon.cpp */,
+				E7AFA18E2260493B00270D58 /* FastNoiseSIMD.cpp */,
+			);
+			path = FastNoiseSIMD;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -645,9 +673,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7AFA1922260493B00270D58 /* FastNoiseSIMD_internal.cpp in Sources */,
+				E7AFA1902260493B00270D58 /* FastNoiseSIMD_sse41.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				E7AFA1962260493B00270D58 /* FastNoiseSIMD.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
-				E7AFA180225FE21900270D58 /* FastNoise.cpp in Sources */,
+				E7AFA18F2260493B00270D58 /* FastNoiseSIMD_sse2.cpp in Sources */,
+				E7AFA1932260493B00270D58 /* FastNoiseSIMD_avx2.cpp in Sources */,
+				E7AFA1912260493B00270D58 /* FastNoiseSIMD_avx512.cpp in Sources */,
+				E7AFA1952260493B00270D58 /* FastNoiseSIMD_neon.cpp in Sources */,
 				E723BFAF225D52880063D8A1 /* particle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -684,6 +718,7 @@
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-mtune=native",
+					"-std=c++11",
 				);
 				SDKROOT = macosx;
 			};
@@ -708,6 +743,11 @@
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D__MACOSX_CORE__",
+					"-mtune=native",
+					"-std=c++11",
+				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
 					"$(OF_CORE_FRAMEWORKS)",
@@ -747,6 +787,7 @@
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-mtune=native",
+					"-std=c++11",
 				);
 				SDKROOT = macosx;
 			};
@@ -780,6 +821,7 @@
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-mtune=native",
+					"-std=c++11",
 				);
 				SDKROOT = macosx;
 			};
@@ -804,6 +846,11 @@
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D__MACOSX_CORE__",
+					"-mtune=native",
+					"-std=c++11",
+				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
 					"$(OF_CORE_FRAMEWORKS)",
@@ -832,6 +879,11 @@
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D__MACOSX_CORE__",
+					"-mtune=native",
+					"-std=c++11",
+				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
 					"$(OF_CORE_FRAMEWORKS)",

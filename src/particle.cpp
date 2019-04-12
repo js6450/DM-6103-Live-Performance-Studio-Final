@@ -23,7 +23,7 @@ void particle::setup(){
 }
 
 //--------------------------------------------------------------
-void particle::update(float** turbX, float** turbY, int x, int y){
+void particle::update(float*** fractal, int x, int y){
     // reset if particle dies
     if (age > particleLife)
         setup();
@@ -46,10 +46,12 @@ void particle::update(float** turbX, float** turbY, int x, int y){
     
     // update position using vel times air resistance
     if (pos.x > 0 && pos.x < ofGetWidth() && pos.y > 0 && pos.y < ofGetHeight()){
-        int posx = pos.x;
-        int posy = pos.y;
-        pos.x += vel.x * (turbX[posx][posy]*2+1);
-        pos.y += vel.y * (turbY[posx][posy]*2+1);
+        int posx = pos.x/2;
+        int posy = pos.y/2;
+        int time = ofGetFrameNum()/8 % (evolutions*2);
+        if (time >= evolutions) time = evolutions*2 - time;
+        pos.x += vel.x * (fractal[posx][posy][time]*2+1);
+        pos.y += vel.y * (fractal[posx][posy][evolutions-time]*2+1);
     }
     age++;
     

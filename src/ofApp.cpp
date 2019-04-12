@@ -1,6 +1,8 @@
 #include "ofApp.h"
+#include "FastNoiseSIMD.h"
 
 int particleLife = 360;
+int evolutions = 128; // Best at around 128. Should be multiple of 8.
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -26,36 +28,34 @@ void ofApp::setup(){
     mouseLight.setDiffuseColor(ofFloatColor(1.f,1.f,1.f));
     
     // Create fractal noise map arrays
-    turbulenceMap1 = new float*[ofGetWidth()];
-    for (int i = 0; i < ofGetWidth(); i++) turbulenceMap1[i] = new float[ofGetHeight()];
-    turbulenceMap2 = new float*[ofGetWidth()];
-    for (int i = 0; i < ofGetWidth(); i++) turbulenceMap2[i] = new float[ofGetHeight()];
+    fractal = new float**[ofGetWidth()/2];
+    for (int i = 0; i < ofGetWidth()/2; i++){
+        fractal[i] = new float*[ofGetHeight()/2];
+        for (int j = 0; j < ofGetHeight()/2; j++)
+            fractal[i][j] = new float[evolutions];
+    }
     
     // Fractal settings/generation
-    FastNoise fractalNoise;
-    fractalNoise.SetNoiseType(FastNoise::SimplexFractal);
-    fractalNoise.SetFrequency(0.007);
-    
-    for (int x = 0; x < ofGetWidth(); x++){
-        for (int y = 0; y < ofGetHeight(); y++){
-            turbulenceMap1[x][y] = fractalNoise.GetNoise(x,y);
+    cout << "This run will need calculate at least " << ofGetWidth()/2*ofGetHeight()/2*evolutions*4*0.000001 << "MB of noise." << endl;
+    FastNoiseSIMD* fractalNoise = FastNoiseSIMD::NewFastNoiseSIMD();
+    fractalNoise->SetFrequency(0.02);
+    float* noiseSet = fractalNoise->GetSimplexFractalSet(0, 0, 0, ofGetWidth()/2, ofGetHeight()/2, evolutions);
+    int index = 0;
+    for (int x = 0; x < ofGetWidth()/2; x++){
+        for (int y = 0; y < ofGetHeight()/2; y++){
+            for (int z = 0; z < evolutions; z++){
+                fractal[x][y][z] = noiseSet[index++];
+            }
         }
     }
-    
-    fractalNoise.SetSeed(2000);
-    
-    for (int x = 0; x < ofGetWidth(); x++){
-        for (int y = 0; y < ofGetHeight(); y++){
-            turbulenceMap2[x][y] = fractalNoise.GetNoise(x,y);
-        }
-    }
+    FastNoiseSIMD::FreeNoiseSet(noiseSet);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     // Update particles
     for (particle &p : particles)
-        p.update(turbulenceMap1, turbulenceMap2, mouseX, mouseY);
+        p.update(fractal, mouseX, mouseY);
     
     // Update light
     mouseLight.setPosition(mouseX, mouseY, 25);
@@ -63,7 +63,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    cout << ofGetFrameRate() << endl;
+    if (ofGetFrameRate() < 55){ cout << "Frame rate is low: " << ofGetFrameRate() << endl;}
     ofEnableDepthTest();
 //    ofEnableLighting();
     ofSetGlobalAmbientColor(ofFloatColor(0.f,0.f,0.f));

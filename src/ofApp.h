@@ -2,7 +2,8 @@
 
 #include "ofMain.h"
 #include "particle.h"
-#include "FastNoise.h"
+
+extern int evolutions;
 
 class ofApp : public ofBaseApp{
 
@@ -27,6 +28,5 @@ public:
     vector<particle> particles;
     unsigned int particleCount;
     ofLight mouseLight;
-    float** turbulenceMap1;
-    float** turbulenceMap2;
+    float*** fractal;
 };

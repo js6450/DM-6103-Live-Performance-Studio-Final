@@ -13,7 +13,7 @@ class particle : public ofBaseApp{
     
 public:
     void setup();
-    void update(float** turbX, float** turbY, int x, int y);
+    void update(float*** fractal, int x, int y);
     void draw();
     
     ofVec2f pos;
